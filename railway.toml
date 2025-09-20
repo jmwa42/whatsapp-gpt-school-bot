@@ -5,10 +5,11 @@ builder = "Dockerfile"
 startCommand = "gunicorn jhs.wsgi:application --bind 0.0.0.0:8000 --workers 3"
 
 [network]
-# By default, service is private
+# Django internal by default
 internal = true
 external = false
 
+# Allow ONLY /mpesa/callback to be public
 [[redirects]]
 from = "/mpesa/callback/*"
 to = "/mpesa/callback/:splat"
